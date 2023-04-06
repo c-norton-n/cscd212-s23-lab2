@@ -57,13 +57,21 @@ public class Television implements Comparable<Television> {
         return this.make.compareTo(t.getMake());
     }
 
+    public String toString() {
+        return String.format
+            ("%s-%s, %d inch%s tv with %s resolution",
+             this.make, this.model, this.screenSize,
+             (this.smart) ? " smart" : "",
+             (this.fourK) ? "4K" : String.format("%d", this.resolution));
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (o == this)
             return true;
         if (o == null)
             return false;
-        if (o instanceof Television)
+        if (!(o instanceof Television))
             return false;
         return this.hashCode() == o.hashCode();
     }
