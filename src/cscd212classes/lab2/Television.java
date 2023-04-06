@@ -48,6 +48,9 @@ public class Television implements Comparable<Television> {
     }
 
     public int compareTo(final Television t) {
+        if (t == null)
+            throw new IllegalArgumentException
+                ("null parameter in the compareTo method");
         if (this.make.compareTo(t.getMake()) == 0) {
             if (this.model.compareTo(t.getModel()) == 0) {
                 return this.screenSize - t.getScreenSize();
