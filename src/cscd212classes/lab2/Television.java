@@ -12,17 +12,24 @@ public class Television implements Comparable<Television> {
     public Television(final String model, final boolean smart,
                       final int screenSize, final int resolution,
                       final String make) {
-        this.model = model;
-        this.smart = smart;
-        this.screenSize = screenSize;
-        this.resolution = resolution;
-        this.make = make;
-        this.fourK = (resolution == 2160) ? true : false;
+        this(make, model, smart, screenSize, resolution);
     }
 
     public Television(final String make, final String model,
                       final boolean smart, final int screenSize,
                       final int resolution) {
+        if (make == null)
+            throw new IllegalArgumentException("Invalid parameter in constructor");
+        if (make.isEmpty())
+            throw new IllegalArgumentException("Invalid parameter in constructor");
+        if (model == null)
+            throw new IllegalArgumentException("Invalid parameter in constructor");
+        if (model.isEmpty())
+            throw new IllegalArgumentException("Invalid parameter in constructor");
+        if (screenSize < 32)
+            throw new IllegalArgumentException("Invalid parameter in constructor");
+        if (resolution < 720)
+            throw new IllegalArgumentException("Invalid parameter in constructor");
         this.model = model;
         this.smart = smart;
         this.screenSize = screenSize;
